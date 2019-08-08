@@ -42,10 +42,11 @@ export class FindingFalconeComponent implements OnInit {
   token: any;
   result: any;
 
-  constructor(private service: FindingFalconeService,
-    private foundFaclcone : FalconeFoundComponent ) {}
+  constructor(private service: FindingFalconeService) {}
 
   ngOnInit() {
+    this.planets=[];
+    this.vehicles=[];
     this.planets = this.service.getPlanets();
     this.vehicles = this.service.getVehicles();
     this.service.getToken().subscribe(res => (this.token = res));
@@ -66,11 +67,6 @@ export class FindingFalconeComponent implements OnInit {
     this.vehicle1Disable = true;
     this.removeVehicle(event.target.value, this.planet1Vehicle);
     this.getTime(this.planet1Distance, event.target.value);
-  }
-
-  getTime(distance: any, speed: any) {
-    var time = distance / speed;
-    this.TotalTime = this.TotalTime + time;
   }
 
   //on change of planet 2
@@ -134,7 +130,7 @@ export class FindingFalconeComponent implements OnInit {
         vehicle.total_no -= 1;
         this.selectedVehicles.push(vehicle.name);
       } else if (vehicle.total_no < 1) {
-        var removedVehicle = temparr.splice(i, 1);
+        temparr.splice(i, 1);
         i--;
       }
     }
@@ -152,6 +148,11 @@ export class FindingFalconeComponent implements OnInit {
     return temparr;
   }
 
+  getTime(distance: any, speed: any) {
+    var time = distance / speed;
+    this.TotalTime = this.TotalTime + time;
+  }
+
   buildRequest() {
     var temp = {
       token: this.token.token,
@@ -162,8 +163,7 @@ export class FindingFalconeComponent implements OnInit {
   }
 
   findFalcone() {
-    this.service
-      .findFalcone(this.buildRequest())
-      .subscribe(res => this.foundFaclcone.storeData(res));
+    this.service.requestBodyFind = this.buildRequest();
+    this.service.totalTime = this.TotalTime;
     }
 }

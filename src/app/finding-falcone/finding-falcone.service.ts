@@ -13,7 +13,8 @@ export class FindingFalconeService {
   tokenURL = 'https://findfalcone.herokuapp.com/token';
   falconeURL = 'https://findfalcone.herokuapp.com/find'
   private vehicles= [];
-  private token: any;
+  requestBodyFind: any;
+  totalTime : any;
   constructor(private http:HttpClient) { }
 
   getPlanets(){
@@ -45,7 +46,8 @@ export class FindingFalconeService {
     return this.http.post(this.tokenURL,body,options);
   }
 
-  findFalcone(body) {
+  findFalcone() {
+    const body = this.requestBodyFind;
     let headers = new HttpHeaders({ 'Accept': 'application/json' , 'Content-Type': 'application/json'});
     let options = { headers: headers };
     return this.http.post(this.falconeURL,body,options);
