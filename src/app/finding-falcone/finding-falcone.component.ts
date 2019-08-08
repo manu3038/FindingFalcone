@@ -1,13 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { FindingFalconeService } from "./finding-falcone.service";
-import { FormGroup, FormBuilder } from "@angular/forms";
-import { NgStyle } from "@angular/common";
-import { FalconeFoundComponent } from "../falcone-found/falcone-found.component";
+import { Component, OnInit } from '@angular/core';
+import { FindingFalconeService } from './finding-falcone.service';
+
 
 @Component({
-  selector: "app-finding-falcone",
-  templateUrl: "./finding-falcone.component.html",
-  styleUrls: ["./finding-falcone.component.css"]
+  selector: 'app-finding-falcone',
+  templateUrl: './finding-falcone.component.html',
+  styleUrls: [ './finding-falcone.component.css']
 })
 export class FindingFalconeComponent implements OnInit {
   private planets;
@@ -41,12 +39,12 @@ export class FindingFalconeComponent implements OnInit {
   selectedPlanets: any;
   token: any;
   result: any;
-  finding :any;
+  finding: any;
   constructor(private service: FindingFalconeService) {}
 
   ngOnInit() {
-    this.planets=[];
-    this.vehicles=[];
+    this.planets = [];
+    this.vehicles = [];
     this.planets = this.service.getPlanets();
     this.vehicles = this.service.getVehicles();
     this.service.getToken().subscribe(res => (this.token = res));
@@ -55,52 +53,52 @@ export class FindingFalconeComponent implements OnInit {
     this.TotalTime = 0;
     this.finding = true;
   }
-  //on change of planet 1
+  // on change of planet 1
   planet1(event) {
     this.planet1Disable = true;
-    this.planet1Distance = event.target.value; //get value from the event
-    var planet = this.removedPlanet(this.planet1Distance, this.planets);
+    this.planet1Distance = event.target.value; // get value from the event
+    const planet = this.removedPlanet(this.planet1Distance, this.planets);
     this.planet1Vehicle = this.getVehicles(this.planet1Distance);
-    this.planet1Removed = Object.assign([], planet); //clone the selected planet removed to iterate again
+    this.planet1Removed = Object.assign([], planet); // clone the selected planet removed to iterate again
   }
-  //on select on vehicle for planet 1
+  // on select on vehicle for planet 1
   vehicle1(event) {
     this.vehicle1Disable = true;
     this.removeVehicle(event.target.value, this.planet1Vehicle);
     this.getTime(this.planet1Distance, event.target.value);
   }
 
-  //on change of planet 2
+  // on change of planet 2
   planet2(event) {
     this.planet2Disable = true;
-    this.planet2Distance = event.target.value; //get value from the event
-    var planet = this.removedPlanet(this.planet2Distance, this.planet1Removed);
+    this.planet2Distance = event.target.value; // get value from the event
+    const planet = this.removedPlanet(this.planet2Distance, this.planet1Removed);
     this.planet2Vehicle = this.getVehicles(this.planet2Distance);
-    this.planet2Removed = Object.assign([], planet); //clone the selected planet removed to iterate again
+    this.planet2Removed = Object.assign([], planet); // clone the selected planet removed to iterate again
   }
   vehicle2(event) {
     this.vehicle2Disable = true;
     this.removeVehicle(event.target.value, this.planet2Vehicle);
     this.getTime(this.planet2Distance, event.target.value);
   }
-  //on change of planet 3
+  // on change of planet 3
   planet3(event) {
     this.planet3Disable = true;
-    this.planet3Distance = event.target.value; //get value from the event
-    var planet = this.removedPlanet(this.planet3Distance, this.planet2Removed);
+    this.planet3Distance = event.target.value; // get value from the event
+    const planet = this.removedPlanet(this.planet3Distance, this.planet2Removed);
     this.planet3Vehicle = this.getVehicles(this.planet3Distance);
-    this.planet3Removed = Object.assign([], planet); //clone the selected planet removed to iterate again
+    this.planet3Removed = Object.assign([], planet); // clone the selected planet removed to iterate again
   }
   vehicle3(event) {
     this.vehicle3Disable = true;
     this.removeVehicle(event.target.value, this.planet3Vehicle);
     this.getTime(this.planet3Distance, event.target.value);
   }
-  //on change of planet 4
+  // on change of planet 4
   planet4(event) {
     this.planet4Disable = true;
-    this.planet4Distance = event.target.value; //get value from the event
-    var planet = this.removedPlanet(this.planet4Distance, this.planet3Removed);
+    this.planet4Distance = event.target.value; // get value from the event
+    this.removedPlanet(this.planet4Distance, this.planet3Removed);
     this.planet4Vehicle = this.getVehicles(this.planet4Distance);
   }
   vehicle4(event) {
@@ -111,24 +109,24 @@ export class FindingFalconeComponent implements OnInit {
     this.finding = false;
   }
 
-  //function to remove planet based on distance from the given array
+  // function to remove planet based on distance from the given array
   removedPlanet(distance, arr) {
-    var temparr = Object.assign([], arr); //copy the planets to temporary array
-    //removed the selected planet from the array
-    for (var i = 0; i < temparr.length; i++) {
-      if (temparr[i].distance == distance) {
-        var removedPlanet = temparr.splice(i, 1);
+    const temparr = Object.assign([], arr); // copy the planets to temporary array
+    // removed the selected planet from the array
+    for (let i = 0; i < temparr.length; i++) {
+      if (temparr[i].distance === distance) {
+        var removedPlanets = temparr.splice(i, 1);
         i--;
       }
     }
-    this.selectedPlanets.push(removedPlanet[0].name);
+    this.selectedPlanets.push(removedPlanets[0].name);
     return temparr;
   }
   removeVehicle(speed: any, arr) {
-    var temparr = Object.assign([], arr);
+    const temparr = Object.assign([], arr);
     for (let i = 0; i < temparr.length; i++) {
       const vehicle = temparr[i];
-      if (vehicle.speed == speed && vehicle.total_no >= 1) {
+      if (vehicle.speed === speed && vehicle.total_no >= 1) {
         vehicle.total_no -= 1;
         this.selectedVehicles.push(vehicle.name);
       } else if (vehicle.total_no < 1) {
@@ -139,9 +137,9 @@ export class FindingFalconeComponent implements OnInit {
     return arr;
   }
 
-  //function to get vehicles based on the planet distance and push to mentioned array
+  // function to get vehicles based on the planet distance and push to mentioned array
   getVehicles(dist) {
-    var temparr = [];
+    const temparr = [];
     this.vehicles.forEach(vehicle => {
       if (vehicle.max_distance >= dist && vehicle.total_no > 0) {
         temparr.push(vehicle);
@@ -151,12 +149,12 @@ export class FindingFalconeComponent implements OnInit {
   }
 
   getTime(distance: any, speed: any) {
-    var time = distance / speed;
+    const time = distance / speed;
     this.TotalTime = this.TotalTime + time;
   }
 
   buildRequest() {
-    var temp = {
+    const temp = {
       token: this.token.token,
       planet_names: this.selectedPlanets,
       vehicle_names: this.selectedVehicles
