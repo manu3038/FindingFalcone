@@ -41,7 +41,7 @@ export class FindingFalconeComponent implements OnInit {
   selectedPlanets: any;
   token: any;
   result: any;
-
+  finding :any;
   constructor(private service: FindingFalconeService) {}
 
   ngOnInit() {
@@ -53,6 +53,7 @@ export class FindingFalconeComponent implements OnInit {
     this.selectedPlanets = [];
     this.selectedVehicles = [];
     this.TotalTime = 0;
+    this.finding = true;
   }
   //on change of planet 1
   planet1(event) {
@@ -107,6 +108,7 @@ export class FindingFalconeComponent implements OnInit {
     this.removeVehicle(event.target.value, this.planet4Vehicle);
     this.getTime(this.planet4Distance, event.target.value);
     console.log(this.buildRequest());
+    this.finding = false;
   }
 
   //function to remove planet based on distance from the given array

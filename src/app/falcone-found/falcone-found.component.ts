@@ -10,6 +10,7 @@ export class FalconeFoundComponent implements OnInit {
   dummy: any;
   results: any;
   totalTime: any;
+  timeMsg: string;
 
   constructor(private service: FindingFalconeService) {}
 
@@ -32,17 +33,14 @@ export class FalconeFoundComponent implements OnInit {
         this.successMsg =
           "Congrats you found Falcone. He was in " +
           this.results.planet_name +
-          ".\n Rejoice Your Victory!! " +
-          this.totalTime +
-          " amount of time was taken to find him.";
+          ".\n Rejoice Your Victory!! ";
         console.log("in if " + this.successMsg);
       } else {
         this.successMsg =
-          "Too Bad! So Sad you weren't Successful in find Falcone. Better Luck Next Time " +
-          this.totalTime +
-          " amount of time was taken.";
+          "Too Bad! So Sad you weren't Successful in find Falcone. Better Luck Next Time ";
         console.log("in else " + this.successMsg);
       }
+      this.timeMsg =  this.totalTime +" amount of time was taken.";
     }
   }
 }
