@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0. 
 
-## Read the PDF for the Problem statements
+## Read the PDF for the Problem statements which is present in src\assets\problem
 
 ## Development server
 
