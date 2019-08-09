@@ -114,19 +114,19 @@ export class FindingFalconeComponent implements OnInit {
     const temparr = Object.assign([], arr); // copy the planets to temporary array
     // removed the selected planet from the array
     for (let i = 0; i < temparr.length; i++) {
-      if (temparr[i].distance === distance) {
-        var removedPlanets = temparr.splice(i, 1);
+      if (temparr[i].distance == distance) {
+        var removedPlanet = temparr.splice(i, 1);
         i--;
       }
     }
-    this.selectedPlanets.push(removedPlanets[0].name);
+    this.selectedPlanets.push(removedPlanet[0].name);
     return temparr;
   }
   removeVehicle(speed: any, arr) {
     const temparr = Object.assign([], arr);
     for (let i = 0; i < temparr.length; i++) {
       const vehicle = temparr[i];
-      if (vehicle.speed === speed && vehicle.total_no >= 1) {
+      if (vehicle.speed == speed && vehicle.total_no >= 1) {
         vehicle.total_no -= 1;
         this.selectedVehicles.push(vehicle.name);
       } else if (vehicle.total_no < 1) {

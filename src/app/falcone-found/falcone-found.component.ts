@@ -31,12 +31,12 @@ export class FalconeFoundComponent implements OnInit {
     if (this.results != null) {
       if (this.results.status === 'success') {
         this.successMsg =
-          'Congrats you found Falcone. He was in ' +
+          'Congrats you found Queen Al Falcone. She was in ' +
           this.results.planet_name +
           '.\n Rejoice Your Victory!! ';
       } else {
         this.successMsg =
-          'Too Bad! So Sad you weren\'t Successful in find Falcone. Better Luck Next Time ';
+          'Too Bad! So Sad you weren\'t Successful in find Queen Al Falcone. Better Luck Next Time ';
       }
       this.timeMsg =  this.totalTime +' amount of time was taken.';
     }
