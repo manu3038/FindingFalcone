@@ -1,0 +1,6 @@
+<select class="form-control " (change)="planet($event)">
+    <option value="">--Select--</option>
+    <option *ngFor="let planet of planetssent" value="{{ planet.distance }}">
+      {{ planet.name }}
+    </option>
+  </select>
