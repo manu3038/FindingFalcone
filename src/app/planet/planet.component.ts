@@ -1,30 +1,35 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FindingFalconeComponent } from '../finding-falcone/finding-falcone.component';
-import { PlanetService } from './planet.service';
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { FindingFalconeComponent } from "../finding-falcone/finding-falcone.component";
+import { PlanetService } from "./planet.service";
 
 @Component({
-  selector: 'app-planet',
-  templateUrl: './planet.component.html',
-  styleUrls: ['./planet.component.css']
+  selector: "app-planet",
+  templateUrl: "./planet.component.html",
+  styleUrls: ["./planet.component.css"]
 })
-export class PlanetComponent implements OnInit  {
-  @Input() planetssent : any;
+export class PlanetComponent implements OnInit {
+  @Input() planetssent: any;
+  @Input() vehiclessent: any;
+  isDisable: boolean;
+  dist: any;
+  lableName: any;
+  constructor(private service: PlanetService) {}
 
-  @Output() change: EventEmitter<boolean> = new EventEmitter();
-  constructor(private service: PlanetService) {
+  ngOnInit() {
+    this.isDisable = false;
   }
-
-ngOnInit(){
-  }
-  planet(event){
-    this.service.removedPlanetArr = this.removePlanet(event.target.value,this.planetssent);
-    console.log(this.service.removedPlanetArr);
-    console.log(this.service.selectedPlanet);
-
+  planet(event) {
+    this.isDisable = true;
+    this.dist = event.target.value;
+    this.service.removedPlanetArr = this.removePlanet(
+      event.target.value,
+      this.planetssent
+    );
+    console.log(this.service.selectedPlanet+"---------"+this.lableName);
   }
   removePlanet(distance, arr) {
-    const temparr = Object.assign([], arr); 
-    var removedPlanet// copy the planets to temporary array
+    const temparr = Object.assign([], arr);
+    var removedPlanet; // copy the planets to temporary array
     // removed the selected planet from the array
     for (let i = 0; i < temparr.length; i++) {
       if (temparr[i].distance == distance) {
@@ -32,6 +37,7 @@ ngOnInit(){
         i--;
       }
     }
+    this.lableName = removedPlanet[0].name;
     this.service.selectedPlanet.push(removedPlanet[0].name);
     return temparr;
   }

@@ -9,92 +9,41 @@
   <!-- PLANET 1 DIV -->
   <div class="form-group col-md-3">
     <h3>Planet 1</h3>
-    <app-planet [planetssent] = 'planets' (change)="getplanet2arr()" ></app-planet>
-      <!-- <select class="form-control " [disabled] = "planet1Disable" (change)="planet1($event)">
-        <option value="">--Select--</option>
-        <option *ngFor="let planet of planets" value="{{ planet.distance }}">
-          {{ planet.name }}
-        </option>
-      </select> -->
+    <app-planet [planetssent] = 'planets' [vehiclessent] = 'vehicles' (change)="getplanet2arr()" ></app-planet>
     <br />
     <br />
     <br>
-    <div *ngFor="let vehicle of planet1Vehicle">
-     <label for="vehicles1">
-        <input type="radio" name="vehicles1" value="{{ vehicle.speed }}"(change)=" vehicle1($event)" [disabled] = "vehicle1Disable"/>
-        {{ vehicle.name }}({{ vehicle.total_no }})
-      </label>
-      <!-- <button type="radio">  {{ vehicle.name }}({{ vehicle.total_no }}) </button> -->
-    </div>
+    
   </div>
 
 <!-- PLANET 2 DIV -->
   <div class="form-group col-md-3">
     <h3>Planet 2</h3>
     <app-planet [planetssent] = 'planet1Removed' (change)="getplanet3arr()" ></app-planet>
-    <!-- <select class="form-control" (change)="planet2($event)" [disabled] = "planet2Disable">
-      <option value="">--Select--</option>
-      <option
-        *ngFor="let planet of planet1Removed"
-        value="{{ planet.distance }}"
-        >{{ planet.name }}
-      </option>
-    </select> -->
     <br />
     <br />
     <br />
-    <div *ngFor="let vehicle of planet2Vehicle">
-      <label for="vehicles2">
-        <input type="radio" name="vehicles2" [disabled] = "vehicle2Disable" value="{{ vehicle.speed }}" (change)=" vehicle2($event)"/>
-        {{ vehicle.name }}({{ vehicle.total_no }})
-      </label>
-    </div>
+   
   </div>
 
   <!-- PLANET 3 DIV -->
   <div class="form-group col-md-3">
     <h3>Planet 3</h3>
     <app-planet [planetssent] = 'planet2Removed' (change)="getplanet4arr()" ></app-planet>
-    <!-- <select class="form-control" (change)="planet3($event)" [disabled] = "planet3Disable">
-      <option value="">--Select--</option>
-      <option
-        *ngFor="let planet of planet2Removed"
-        value="{{ planet.distance }}"
-        >{{ planet.name }}
-      </option>
-    </select> -->
     <br />
     <br />
     <br />
-    <div *ngFor="let vehicle of planet3Vehicle">
-      <label for="vehicles3">
-        <input type="radio" name="vehicles3" [disabled] = "vehicle3Disable" value="{{ vehicle.speed }}" (change)=" vehicle3($event)" />
-        {{ vehicle.name }}({{ vehicle.total_no }})
-      </label>
-    </div>
+    
   </div>
 
   <!-- PLANET 4 DIV -->
   <div class="form-group col-md-3">
     <h3>Planet 4</h3>
     <app-planet [planetssent] = 'planet3Removed' ></app-planet>
-    <!-- <select class="form-control" (change)="planet4($event)" [disabled] = "planet4Disable">
-      <option value="">--Select--</option>
-      <option
-        *ngFor="let planet of planet3Removed"
-        value="{{ planet.distance }}"
-        >{{ planet.name }}
-      </option>
-    </select> -->
     <br />
     <br />
     <br />
-    <div *ngFor="let vehicle of planet4Vehicle">
-      <label for="vehicles4">
-        <input type="radio" name="vehicles4" [disabled] = "vehicle4Disable" value="{{ vehicle.speed }}" (change)=" vehicle4($event)" />
-        {{ vehicle.name }}({{ vehicle.total_no }})
-      </label>
-    </div>
+    
   </div>
   </div>
   <h3 class="bold" style="text-align: center">Total time: {{TotalTime}}</h3>

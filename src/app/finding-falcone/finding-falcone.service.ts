@@ -5,16 +5,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FindingFalconeService {
+ 
  private plantes = [];
   planetsURL = 'https://findfalcone.herokuapp.com/planets';
-  vehiclesURL = 'https://findfalcone.herokuapp.com/vehicles';
+  
   tokenURL = 'https://findfalcone.herokuapp.com/token';
   falconeURL = 'https://findfalcone.herokuapp.com/find'
-  private vehicles= [];
+  vehiclesURL = 'https://findfalcone.herokuapp.com/vehicles';
   requestBodyFind: any;
   totalTime: any;
+  vehicles: any[];
   constructor(private http:HttpClient) { }
 
+  getVehicles(): any {
+    this.http.get(this.vehiclesURL).subscribe(
+      (val : any[]) =>{
+        this.vehicles= [];
+        for (let index = 0; index < val.length; index++) {
+          this.vehicles.push(val[index]);
+        }
+      }
+    );
+    return this.vehicles;
+  }
+  
   getPlanets(){
      this.http.get(this.planetsURL).subscribe(
       (val: any[]) => {
@@ -25,17 +39,6 @@ export class FindingFalconeService {
     );
     return this.plantes;
   }
-  getVehicles(): any {
-    this.http.get(this.vehiclesURL).subscribe(
-      (val : any[]) =>{
-        for (let index = 0; index < val.length; index++) {
-          this.vehicles.push(val[index]);
-        }
-      }
-    );
-    return this.vehicles;
-  }
-
   getToken() {
     const body = '';
     const headers = new HttpHeaders({ 'Accept': 'application/json' });

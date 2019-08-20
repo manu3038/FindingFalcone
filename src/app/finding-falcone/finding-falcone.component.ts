@@ -10,7 +10,7 @@ import { PlanetService } from '../planet/planet.service';
   styleUrls: [ './finding-falcone.component.css']
 })
 export class FindingFalconeComponent implements OnInit {
-  private vehicles;
+  vehicles:any[];
   planet1Removed: Array<any>[];
   planet1Vehicle = [];
 
@@ -32,7 +32,6 @@ export class FindingFalconeComponent implements OnInit {
 
   TotalTime: any;
   selectedVehicles: any;
-  selectedPlanets: any;
   token: any;
   result: any;
   finding: any;
@@ -47,7 +46,6 @@ export class FindingFalconeComponent implements OnInit {
     this.planets = this.service.getPlanets();
     this.vehicles = this.service.getVehicles();
     this.service.getToken().subscribe(res => (this.token = res));
-    this.selectedPlanets = [];
     this.selectedVehicles = [];
     this.TotalTime = 0;
     this.finding = true;
@@ -108,15 +106,7 @@ export class FindingFalconeComponent implements OnInit {
   }
 
   // function to get vehicles based on the planet distance and push to mentioned array
-  getVehicles(dist) {
-    const temparr = [];
-    this.vehicles.forEach(vehicle => {
-      if (vehicle.max_distance >= dist && vehicle.total_no > 0) {
-        temparr.push(vehicle);
-      }
-    });
-    return temparr;
-  }
+ 
 
   getTime(distance: any, speed: any) {
     const time = distance / speed;
@@ -126,7 +116,7 @@ export class FindingFalconeComponent implements OnInit {
   buildRequest() {
     const temp = {
       token: this.token.token,
-      planet_names: this.selectedPlanets,
+      planet_names: this.planetService.selectedPlanet,
       vehicle_names: this.selectedVehicles
     };
     return temp;

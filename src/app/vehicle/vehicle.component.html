@@ -1,1 +1,9 @@
-<p>vehicle works!</p>
+<br>
+<br>
+<br>
+<div *ngFor="let vehicle of vehicles">
+    <label [for]="lableName">
+        <input type="radio" [name]="lableName" [disabled] = "isDisable" value="{{ vehicle.speed }}" (change)="vehicle1($event)"/>
+        {{ vehicle.name }}({{ vehicle.total_no }})
+    </label>
+</div>
