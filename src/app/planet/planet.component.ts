@@ -1,15 +1,13 @@
-import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { FindingFalconeComponent } from "../finding-falcone/finding-falcone.component";
-import { PlanetService } from "./planet.service";
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { PlanetService } from './planet.service';
 
 @Component({
-  selector: "app-planet",
-  templateUrl: "./planet.component.html",
-  styleUrls: ["./planet.component.css"]
+  selector: 'app-planet',
+  templateUrl: './planet.component.html',
+  styleUrls: ['./planet.component.css']
 })
 export class PlanetComponent implements OnInit {
   @Input() planetssent: any;
-  @Input() vehiclessent: any;
   isDisable: boolean;
   dist: any;
   lableName: any;
@@ -25,7 +23,6 @@ export class PlanetComponent implements OnInit {
       event.target.value,
       this.planetssent
     );
-    console.log(this.service.selectedPlanet+"---------"+this.lableName);
   }
   removePlanet(distance, arr) {
     const temparr = Object.assign([], arr);

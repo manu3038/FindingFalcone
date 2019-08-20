@@ -2,7 +2,7 @@ import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { FindingFalconeService } from '../finding-falcone/finding-falcone.service';
 @Component({
   selector: 'app-falcone-found',
-  templateUrl:'./falcone-found.component.html' ,
+  templateUrl: './falcone-found.component.html' ,
   styleUrls: ['./falcone-found.component.css']
 })
 export class FalconeFoundComponent implements OnInit {
@@ -15,8 +15,6 @@ export class FalconeFoundComponent implements OnInit {
   constructor(private service: FindingFalconeService) {}
 
   ngOnInit() {
-    console.log(this.service.requestBodyFind);
-    console.log(this.service.totalTime);
     this.service
       .findFalcone()
       .subscribe(res => this.storeData(res, this.service.totalTime));
@@ -24,7 +22,6 @@ export class FalconeFoundComponent implements OnInit {
   storeData(res, time) {
     this.results = Object.assign([], res);
     this.totalTime = time;
-    console.log(this.results);
     this.resultz();
   }
   resultz() {

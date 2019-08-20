@@ -7,13 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FindingFalconeService {
  
  private plantes = [];
-  planetsURL = 'https://findfalcone.herokuapp.com/planets';
-  
+  planetsURL = 'https://findfalcone.herokuapp.com/planets'
   tokenURL = 'https://findfalcone.herokuapp.com/token';
   falconeURL = 'https://findfalcone.herokuapp.com/find'
   vehiclesURL = 'https://findfalcone.herokuapp.com/vehicles';
   requestBodyFind: any;
-  totalTime= 0 ;
+  totalTime = 0 ;
   vehicles: any[];
   constructor(private http:HttpClient) { }
 
@@ -43,13 +42,13 @@ export class FindingFalconeService {
     const body = '';
     const headers = new HttpHeaders({ 'Accept': 'application/json' });
     const options = { headers: headers };
-    return this.http.post(this.tokenURL,body,options);
+    return this.http.post(this.tokenURL, body, options);
   }
 
   findFalcone() {
     const body = this.requestBodyFind;
     const headers = new HttpHeaders({ 'Accept': 'application/json' , 'Content-Type': 'application/json'});
     const options = { headers: headers };
-    return this.http.post(this.falconeURL,body,options);
+    return this.http.post(this.falconeURL, body, options);
   }
 }

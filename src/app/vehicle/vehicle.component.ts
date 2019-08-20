@@ -9,21 +9,15 @@ import { FindingFalconeService } from '../finding-falcone/finding-falcone.servic
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  @Input() distance : any;
-  @Input() lableName : any;
+  @Input() distance: any;
+  @Input() lableName: any;
   apiVehicles: any;
   vehicles: any[];
-  
   isDisable: boolean;
-  findComp : FindingFalconeComponent
-  totalTime: number;
-  constructor(private service : VehicleService,private findService :FindingFalconeService) { 
-    this.totalTime =0;
-  }
+  constructor(private service: VehicleService, private findService: FindingFalconeService) {   }
 
   ngOnInit() {
     this.vehicles = this.getVehicles(this.distance);
-    console.log(this.lableName+" in vehicle");
   }
 
   getVehicles(dist) {
@@ -37,9 +31,8 @@ export class VehicleComponent implements OnInit {
   }
 
   vehicle1(event){
-    console.log(event.target.value);
-    this.vehicles = this.removeVehicle(event.target.value,this.vehicles);
-    this.getTime(this.distance,event.target.value)
+    this.vehicles = this.removeVehicle(event.target.value, this.vehicles);
+    this.getTime(this.distance, event.target.value);
     this.isDisable = true;
   }
   removeVehicle(speed: any, arr) {
@@ -54,15 +47,11 @@ export class VehicleComponent implements OnInit {
         i--;
       }
     }
-    console.log(this.service.selectedVehicles);
-    
     return arr;
   }
 
   getTime(distance: any, speed: any) {
     const time = distance / speed;
     this.findService.totalTime = this.findService.totalTime + time;
-    console.log(this.totalTime+"--->total time");
-    
   }
 }
