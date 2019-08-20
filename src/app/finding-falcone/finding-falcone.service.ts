@@ -13,7 +13,7 @@ export class FindingFalconeService {
   falconeURL = 'https://findfalcone.herokuapp.com/find'
   vehiclesURL = 'https://findfalcone.herokuapp.com/vehicles';
   requestBodyFind: any;
-  totalTime: any;
+  totalTime= 0 ;
   vehicles: any[];
   constructor(private http:HttpClient) { }
 

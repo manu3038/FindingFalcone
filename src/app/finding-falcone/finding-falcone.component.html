@@ -39,7 +39,7 @@
   <!-- PLANET 4 DIV -->
   <div class="form-group col-md-3">
     <h3>Planet 4</h3>
-    <app-planet [planetssent] = 'planet3Removed' ></app-planet>
+    <app-planet [planetssent] = 'planet3Removed'  (change)="enableFind()" ></app-planet>
     <br />
     <br />
     <br />
@@ -49,7 +49,7 @@
   <h3 class="bold" style="text-align: center">Total time: {{TotalTime}}</h3>
   <div class="row" >
     <div style="text-align: center">
-    <button style="align-items: center" routerLink="falcone-result" class="btn btn-success" (click)='findFalcone()' [disabled] = "finding">Find the Falcone</button>
+    <button style="align-items: center" routerLink="falcone-result" class="btn btn-success" (click)='findFalcone()' [disabled] = "finding">Find Queen Falcone</button>
   </div>
   </div>
 </form>
