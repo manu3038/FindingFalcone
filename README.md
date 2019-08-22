@@ -6,9 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Berif description of the project:
 
-This angular 8 project which calls an API to populate the dropdown and an other API call to populate the radio button based the option choosed in the dropdown. The current porject has 4 input dropdown with their respective radio button set. 
+This angular 8 project which calls an API to populate the dropdown and an other API call to populate the radio button based the option choosen in the dropdown. The current porject has 4 input dropdown with their respective radio button set. 
 
-  On click of the find button an API Post call is made to fetch the result based the inputs provied along with token which is again will be obtained after an API Call. The obtained result will be shown in the next page.
+  On click of the find button an API Post call is made to fetch the result based the inputs provided along with token which is again will be obtained after an API Call. The obtained result will be shown in the next page.
   
   master branch has my first approach to problem.
   Modular brach has my modular approach to problem.
