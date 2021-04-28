@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0. 
 
-## Read the PDF for the Problem statements which is present in src\assets\problem
+## Read the PDF for the Problem statements which is present in src\assets\problem or Problem statement can also be viewed here https://www.geektrust.in/coding-problem/frontend/space
 
 ## Berif description of the project:
 
